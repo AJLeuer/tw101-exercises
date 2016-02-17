@@ -2,9 +2,10 @@ package com.thoughtworks.tw101.introductory_programming_exercises;
 
 public class DiamondExercises {
     public static void main(String[] args) {
-        drawAnIsoscelesTriangle(10);
-        drawADiamond(8);
-        drawADiamondWithYourName(3);
+        drawAnIsoscelesTriangle(8, false);
+        //drawAnIsoscelesTriangle(10);
+        //drawADiamond(8);
+        //drawADiamondWithYourName(3);
     }
 
 //    Isosceles Triangle
@@ -28,12 +29,32 @@ public class DiamondExercises {
                 System.out.print('*') ;
             }
 
-            /* we can just print a new line here, we don't actually need to print the blank spaces
-            to the right of the asterisks */
+            // we can just print a new line here
             System.out.println() ;
 
             currentRowStartingPosition -= 1 ;
             currentRowAsterisksCount += 2 ;
+        }
+    }
+
+    private static void drawAnIsoscelesTriangle(int n, boolean flipped) {
+        /* the length of all rows is determined by the length of the first/final row, which is equal
+           to 2x the total number of rows minus 1 */
+        final int sizeOfRows = (2 * n) - 1 ;
+
+        int blankSpaces = flipped ? 0 : (sizeOfRows / 2) ;
+
+        for (int i = 0; i < sizeOfRows ; i++) {
+            for (int j = 0; j < blankSpaces  ; j++) {
+                System.out.print(' ') ;
+            }
+            for (int j = 0; j < (sizeOfRows - blankSpaces); j++) {
+                System.out.print('*') ;
+            }
+
+            System.out.println() ;
+
+            blankSpaces = flipped ? (blankSpaces + 2) : (blankSpaces - 2) ;
         }
     }
 
