@@ -6,8 +6,6 @@ import java.util.LinkedList;
 
 public class DiamondExercises {
     public static void main(String[] args) {
-        drawAnIsoscelesTriangle(8);
-
         drawAnIsoscelesTriangle(3);
         drawADiamond(8);
         drawADiamondWithYourName(3);
@@ -19,7 +17,18 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-                /* the length of all rows is determined by the length of the final row, which is equal
+        drawAnIsoscelesTriangle(n, false, 0);
+    }
+
+    /**
+     * Overload helper method for drawAnIsoscelesTriangle(int)
+     *
+     * @param n The height of the triangle
+     * @param flipped Whether to flip the triangle upside-down
+     * @param offsetRight The number of spaces to offset the triangle to the right, if any
+     */
+    private static void drawAnIsoscelesTriangle(int n, boolean flipped, int offsetRight)  {
+        /* the length of all rows is determined by the length of the final row, which is equal
            to 2x the total number of rows minus 1 */
         int sizeOfRows = (2 * n) - 1 ;
         int currentRowStartingPosition = sizeOfRows / 2 ;
@@ -29,7 +38,7 @@ public class DiamondExercises {
 
         for (int i = 0, currentRowAsterisksCount = 1 ; i < n ; i++) {
 
-            for (int j = 0; j < currentRowStartingPosition ; j++) {
+            for (int j = 0; j < (currentRowStartingPosition + offsetRight) ; j++) {
                 outputLine.append(' ') ;
             }
 
@@ -47,10 +56,10 @@ public class DiamondExercises {
             currentRowAsterisksCount += 2 ;
         }
 
-        printStringList(output, false);
+        printStringList(output, flipped);
     }
 
-    //Helper method for drawAnIsoscelesTriangle(int). Allows printing a list
+    //Helper method for drawAnIsoscelesTriangle(int, boolean). Allows printing a list
     //of Strings forward or backward.
     private static void printStringList(LinkedList<String> strings, boolean reverse) {
         if (reverse == false) {
@@ -74,7 +83,8 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
-
+        drawAnIsoscelesTriangle(n);
+        drawAnIsoscelesTriangle(n - 1, true, 1);
     }
 
 //    Diamond with Name
@@ -86,6 +96,30 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
+        drawADiamondWithName(n, "Adam");
+    }
 
+    private static void drawADiamondWithName(int n, String name) {
+
+        int diamondOffset = 0;
+        int nameOffset = 0 ;
+
+        if (name.length() > n) {
+            diamondOffset = name.length() - n ;
+        }
+        else if (n > name.length()) {
+            nameOffset = n - name.length() ;
+        }
+
+        drawAnIsoscelesTriangle(n - 1, false, diamondOffset);
+        drawName(name, nameOffset) ;
+        drawAnIsoscelesTriangle(n - 1, true, diamondOffset);
+    }
+
+    private static void drawName(String name, int offset) {
+        for (int i = 0; i < offset; i++) {
+            System.out.print(' ') ;
+        }
+        System.out.println(name) ;
     }
 }
