@@ -1,6 +1,8 @@
 package com.thoughtworks.tw101.introductory_programming_exercises;
 
 import java.lang.StringBuilder ;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class DiamondExercises {
     public static void main(String[] args) {
@@ -29,25 +31,29 @@ public class DiamondExercises {
         int sizeOfRows = (2 * n) - 1 ;
         int currentRowStartingPosition = sizeOfRows / 2 ;
 
-        StringBuilder output = new StringBuilder() ;
+        StringBuilder outputLine = new StringBuilder() ;
+        LinkedList<String> output = new LinkedList<String>() ;
 
         for (int i = 0, currentRowAsterisksCount = 1 ; i < n ; i++) {
 
             for (int j = 0; j < currentRowStartingPosition ; j++) {
-                output.append(' ') ;
+                outputLine.append(' ') ;
             }
 
             for (int j = 0; j < currentRowAsterisksCount; j++) {
-                output.append('*') ;
+                outputLine.append('*') ;
             }
 
             // we can just put a new line here
-            output.append('\n') ;
-            System.out.println() ;
+            outputLine.append('\n') ;
+            output.push(outputLine.toString()) ;
+            outputLine = new StringBuilder() ; //reset
+            //System.out.println() ;
 
             currentRowStartingPosition -= 1 ;
             currentRowAsterisksCount += 2 ;
         }
+        System.out.print(output.toString()) ;
         int i = 0 ;
     }
 
