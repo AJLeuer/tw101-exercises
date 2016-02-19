@@ -6,9 +6,9 @@ import java.util.LinkedList;
 
 public class DiamondExercises {
     public static void main(String[] args) {
-        //drawAnIsoscelesTriangle(8, false);
+        drawAnIsoscelesTriangle(8);
 
-        drawAnIsoscelesTriangle(10);
+        drawAnIsoscelesTriangle(3);
         drawADiamond(8);
         drawADiamondWithYourName(3);
     }
@@ -19,14 +19,7 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-        drawAnIsoscelesTriangle(n, false);
-    }
-
-
-    // Overloaded helper method for drawAnIsoscelesTriangle(int)
-    // Allows drawing an isosceles triangle upside-down
-    private static void drawAnIsoscelesTriangle(int n, boolean flipped) {
-        /* the length of all rows is determined by the length of the final row, which is equal
+                /* the length of all rows is determined by the length of the final row, which is equal
            to 2x the total number of rows minus 1 */
         int sizeOfRows = (2 * n) - 1 ;
         int currentRowStartingPosition = sizeOfRows / 2 ;
@@ -44,18 +37,34 @@ public class DiamondExercises {
                 outputLine.append('*') ;
             }
 
-            // we can just put a new line here
+
             outputLine.append('\n') ;
-            output.push(outputLine.toString()) ;
+            output.addLast(outputLine.toString()) ;
             outputLine = new StringBuilder() ; //reset
-            //System.out.println() ;
+
 
             currentRowStartingPosition -= 1 ;
             currentRowAsterisksCount += 2 ;
         }
-        System.out.print(output.toString()) ;
-        int i = 0 ;
+
+        printStringList(output, false);
     }
+
+    //Helper method for drawAnIsoscelesTriangle(int). Allows printing a list
+    //of Strings forward or backward.
+    private static void printStringList(LinkedList<String> strings, boolean reverse) {
+        if (reverse == false) {
+            while (strings.isEmpty() == false) {
+                System.out.print(strings.pop()) ;
+            }
+        }
+        else { //if (reverse == true)
+            while (strings.isEmpty() == false) {
+                System.out.print(strings.removeLast()) ;
+            }
+        }
+    }
+
 
 //    Diamond
 //    Given a number n, print a centered diamond. Example for n=3:
