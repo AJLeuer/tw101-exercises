@@ -32,7 +32,7 @@ public class PrimeFactors {
     }
 
     /**
-     * Method for finding prime numbers up to n. Implements the
+     * Method for finding prime numbers up to n. Uses the
      * <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>.
      */
     private static List<Integer> findPrimes(int n) {
@@ -78,6 +78,7 @@ public class PrimeFactors {
         }
 
         index++ ;
+        //search recursively
         return findPrimesHelper(index, numbers) ;
     }
 }

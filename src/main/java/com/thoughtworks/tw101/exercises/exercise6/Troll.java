@@ -3,7 +3,7 @@ package com.thoughtworks.tw101.exercises.exercise6;
 /**
  * Created by Adam on 2/22/16.
  */
-public class Troll extends GenericMonster {
+public class Troll extends BasicMonster {
 
     public Troll() {
         //Trolls are named “Troll”, have 40 hit points...

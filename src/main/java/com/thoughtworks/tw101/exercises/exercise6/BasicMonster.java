@@ -3,12 +3,12 @@ package com.thoughtworks.tw101.exercises.exercise6;
 /**
  * Created by Adam on 2/22/16.
  */
-public abstract class GenericMonster implements Monster {
+public abstract class BasicMonster implements Monster {
 
     protected String name ;
     protected int hitPoints ;
 
-    public GenericMonster(String name, int hitPoints) {
+    public BasicMonster(String name, int hitPoints) {
         this.name = name;
         this.hitPoints = hitPoints;
     }
