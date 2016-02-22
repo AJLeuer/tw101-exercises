@@ -10,9 +10,9 @@ import java.util.Scanner ;
  */
 public class GuessingGame {
 
-    private Scanner inputReader ;
-    private PrintStream output ;
-    private int secretNumber ;
+    protected Scanner inputReader ;
+    protected PrintStream output ;
+    protected int secretNumber ;
 
 
     public GuessingGame(InputStream input, PrintStream output) {
@@ -21,7 +21,7 @@ public class GuessingGame {
         initializeGame() ; //will initialize other member vars
     }
 
-    private void initializeGame() {
+    protected void initializeGame() {
         Random rand = new Random() ;
         secretNumber = rand.nextInt(100) + 1 ;
     }
