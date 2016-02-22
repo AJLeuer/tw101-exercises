@@ -12,13 +12,23 @@ import java.util.List;
 public class PrimeFactors {
 
     public static void main(String[] args) {
-
         List<Integer> primeFactors = generate(30);
     }
 
     private static List<Integer> generate(int n) {
 
-        return null;
+        List<Integer> factors = new ArrayList<Integer>() ;
+        List<Integer> potentialFactors = findPrimes(n) ;
+
+        for (int i = 0; (i < potentialFactors.size()) && (potentialFactors.get(i) <= Math.sqrt(n)) ; i++) {
+            final int prime = potentialFactors.get(i) ;
+
+            if ((n % prime) == 0) {
+                factors.add(prime) ;
+            }
+        }
+
+        return factors;
     }
 
     /**
@@ -33,7 +43,7 @@ public class PrimeFactors {
         for (int i = 2 ; i <= n ; i++) {
             numbers.add(i) ;
         }
-        
+
         return findPrimesHelper(0, numbers) ;
     }
 
@@ -51,19 +61,23 @@ public class PrimeFactors {
             return numbers ;
         }
 
-        int p = numbers.get(index) ;
+        final int p = numbers.get(index) ;
 
         //remove all multiples of p found in the list (except p itself)
         for (int i = 0; i < numbers.size() ; i++) {
+
+            final int number = numbers.get(i) ;
             //skip p itself in the list
-            if (numbers.get(i) == p) {
+            if (number == p) {
                 continue ;
             }
-            if ((numbers.get(i) % p) == 0) {
+            if ((number % p) == 0) {
                 numbers.remove(i) ;
+                i-- ; //so we don't skip a number in the list after removing
             }
         }
 
-        return findPrimesHelper(index++, numbers) ;
+        index++ ;
+        return findPrimesHelper(index, numbers) ;
     }
 }
