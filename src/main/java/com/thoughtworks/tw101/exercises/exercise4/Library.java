@@ -1,5 +1,6 @@
 package com.thoughtworks.tw101.exercises.exercise4;
 
+import java.io.CharArrayReader;
 import java.io.PrintStream;
 
 public class Library {
@@ -12,5 +13,12 @@ public class Library {
     }
 
     public void printBooksContaining(String partialBookTitle) {
+
+        for (String book: books) {
+            if (book.contains(partialBookTitle)) {
+                printStream.println(book) ;
+            }
+        }
     }
+
 }
