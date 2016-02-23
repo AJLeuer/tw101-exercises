@@ -1,5 +1,7 @@
 package com.thoughtworks.tw101.exercises.exercise9;
 
+import com.thoughtworks.tw101.exercises.exercise9.Node ;
+
 import java.util.List;
 
 // Exercise #9: Create a class Node that implements a binary tree for Strings. It should have an add(String name) method

@@ -39,7 +39,7 @@ public class GuessingGame {
                 output.println("Too low.") ;
             }
             else if (guess > secretNumber) {
-                output.println("Too high") ;
+                output.println("Too high.") ;
             }
             else if (guess == secretNumber) {
                 output.println("You win!") ;

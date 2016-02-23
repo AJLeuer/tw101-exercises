@@ -12,6 +12,7 @@ import java.util.List;
 public class PrimeFactors {
 
     public static void main(String[] args) {
+
         List<Integer> primeFactors = generate(30);
     }
 
